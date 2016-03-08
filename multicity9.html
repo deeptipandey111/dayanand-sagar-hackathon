@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>MyAPI</title>
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        height: 60%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+	<a href = "http://localhost/user/multicity.html">2001</a>
+<a href = "http://localhost/user/multicity2.html">2002</a>
+<a href = "http://localhost/user/multicity3.html">2003</a>
+<a href = "http://localhost/user/multicity4.html">2004</a>
+<a href = "http://localhost/user/multicity5.html">2005</a>
+<a href = "http://localhost/user/multicity6.html">2006</a>
+<a href = "http://localhost/user/multicity7.html">2007</a>
+<a href = "http://localhost/user/multicity8.html">2008</a>
+<a href = "http://localhost/user/multicity9.html">2009</a>
+    <script>
+
+var citymap = {
+  1: {
+    center: {lat: 28.613939, lng: 77.209021},
+    cn:1636
+  },
+  2: {
+    center: {lat: 17.385044, lng: 78.486671},
+    cn:1635
+  },
+  3: {
+    center: {lat: 27.084368, lng: 93.605316},
+    cn: 75
+  },
+  4: {
+    center: {lat: 26.143346, lng: 91.789795},
+    cn:1937
+  },
+  5: {
+    center: {lat: 25.594095, lng: 85.137565},
+    cn:1128
+  },
+  6: {
+    center: {lat: 21.251384, lng: 81.629641},
+    cn:1380
+  },
+  7: {
+    center: {lat: 15.490930, lng: 73.827850},
+    cn:86
+  },
+  8: {
+    center: {lat: 23.215635, lng: 72.636941},
+    cn:732
+  },
+  9: {
+    center: {lat: 30.733315, lng: 76.779418},
+    cn:971
+  },
+  10: {
+    center: {lat: 31.104814, lng: 77.173403},
+    cn:250
+  },
+  11: {
+    center: {lat: 23.344100, lng: 85.309562},
+    cn:1204
+  },
+  12: {
+    center: {lat: 12.971599, lng: 77.594563},
+    cn:1030
+  },
+  13: {
+    center: {lat: 8.524139, lng: 76.936638},
+    cn:1221
+  },
+  14: {
+    center: {lat: 23.259933, lng: 77.412615},
+    cn:4335
+  },
+  15: {
+    center: {lat: 19.075984, lng: 72.877656},
+    cn:3063
+  },
+  16: {
+    center: {lat: 24.817011, lng: 93.936844},
+    cn:72
+  },
+  17: {
+    center: {lat: 25.578773, lng: 91.893254},
+    cn:183
+  },  18: {
+    center: {lat: 23.727107, lng: 92.717639},
+    cn:89
+  },  19: {
+    center: {lat: 25.658596, lng: 94.105331},
+    cn:31
+  },  20: {
+    center: {lat: 20.296059, lng: 85.824540},
+    cn:1832
+  },  21: {
+    center: {lat: 26.912434, lng: 75.787271},
+    cn:3285
+  },  22: {
+    center: {lat:27.338936, lng:88.606504},
+    cn:43
+  },  23: {
+    center: {lat: 13.082680, lng: 80.270718},
+    cn:923
+  },  24: {
+    center: {lat: 23.831457, lng: 91.286778},
+    cn:233
+  },  25: {
+    center: {lat: 26.846694, lng: 93.936844},
+    cn:3050
+  },  26: {
+    center: {lat: 30.316495, lng: 78.032192},
+    cn:228
+  },  27: {
+    center: {lat: 22.572646, lng: 88.363895},
+    cn:1685
+  }  
+};
+
+function initMap() {
+  // Create the map.
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 4,
+    center: {lat: 23.2500, lng: 77.4167},
+    mapTypeId: google.maps.MapTypeId.TERRAIN
+  });
+
+  // Construct the circle for each value in citymap.
+  // Note: We scale the area of the circle based on the population.
+  for (var city in citymap) {
+    // Add the circle for this city to the map.
+    yourNumber = citymap[city].cn;
+    hexString = yourNumber.toString(16);
+    var cityCircle = new google.maps.Circle({
+
+      strokeColor: '#0000FF'+'#'+hexString,
+      strokeOpacity: 0.8,
+      strokeWeight: 2,
+      fillColor: '#ff0bee',
+      fillOpacity: citymap[city].cn/1000.0,
+      map: map,
+      center: citymap[city].center,
+      radius: Math.sqrt(citymap[city].cn) * 2000 *2
+    });
+  }
+}
+
+    </script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBl3iS825m16Ktf6nyBsiWgO8ETtFtb1X4&signed_in=true&callback=initMap"></script>
+  </body>
+</html>
+
